@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import bcrypt from "bcrypt";
-import { JsonWebTokenError } from "jsonwebtoken";
+import jwt from "jsonwebtoken"
+// import { JsonWebTokenError } from "jsonwebtoken";
 
 const userSchema = new Schema({
     username: {
@@ -31,10 +32,10 @@ const userSchema = new Schema({
     coverImage: {
         type: String, //Cloudnary API
     },
-    watchHistory: {
+    watchHistory: [{
         type: Schema.Types.ObjectId,
         ref: 'Video'
-    },
+    }],
     password: {
         type: String,
         required: [true, "Password is required"]
